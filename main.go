@@ -8,9 +8,12 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"os/exec"
 
 	"github.com/jroimartin/gocui"
 )
+
+var done = false
 
 func main() {
 	f, _ := os.OpenFile("log.txt", 1, 0644)
@@ -91,7 +94,15 @@ func showMsg(g *gocui.Gui, v *gocui.View) error {
 	if l, err = v.Line(cy); err != nil {
 		l = ""
 	}
-	log.Println(l)
+	_ = l
+	g.Close()
+	cmd := exec.Command("ssh", "ngoctd@192.168.23.56", "-p", "2395")
+	// cmd := exec.Command("ssh", "ngoctd@10.5.0.242", "-p", "2395")
+	// cmd := exec.Command("echo", "runnnn")
+
+	err = cmd.Run()
+	if err == nil {
+	}
 
 	return nil
 }
