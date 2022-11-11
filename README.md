@@ -3,6 +3,7 @@
 ## Who i am
 
 support ssh with up/down (j/k) then enter
+![sshgui demo](./result.png)
 
 ## How to download
 
