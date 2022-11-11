@@ -98,7 +98,8 @@ func showMsg(g *gocui.Gui, v *gocui.View) error {
 	// cmd := exec.Command("echo", "runnnn")
 
 	err = cmd.Run()
-	if err == nil {
+	if err != nil {
+		log.Println(err)
 	}
 
 	return nil
