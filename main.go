@@ -16,7 +16,7 @@ import (
 var done = false
 
 func main() {
-	f, _ := os.Open("log.txt")
+	f, _ := os.OpenFile("log.txt", os.O_CREATE|os.O_APPEND|os.O_WRONLY, 0644)
 	log.SetOutput(f)
 	g, err := gocui.NewGui(gocui.OutputNormal)
 	if err != nil {
@@ -80,6 +80,7 @@ func quit(g *gocui.Gui, v *gocui.View) error {
 }
 
 func showMsg(g *gocui.Gui, v *gocui.View) error {
+	log.Println("exec ssh")
 	var l string
 	var err error
 
@@ -96,7 +97,6 @@ func showMsg(g *gocui.Gui, v *gocui.View) error {
 	cmd := exec.Command("ssh", "ngoctd@192.168.23.56", "-p", "2395")
 	// cmd := exec.Command("ssh", "ngoctd@10.5.0.242", "-p", "2395")
 	// cmd := exec.Command("echo", "runnnn")
-	log.Println("exec ssh")
 	cmd.Stdin = os.Stdin
 	cmd.Stdout = os.Stdout
 	cmd.Stderr = os.Stderr
