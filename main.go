@@ -44,9 +44,6 @@ func layout(g *gocui.Gui) error {
 		if err != gocui.ErrUnknownView {
 			return err
 		}
-		v.Highlight = true
-		v.SelBgColor = gocui.ColorGreen
-		v.SelFgColor = gocui.ColorBlack
 		fmt.Fprintln(v, "trino@192.168.1.1")
 		fmt.Fprintln(v, "trino@192.168.1.2")
 		fmt.Fprintln(v, "trino@192.168.1.3")
