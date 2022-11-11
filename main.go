@@ -1,0 +1,104 @@
+// Copyright 2014 The gocui Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style
+// license that can be found in the LICENSE file.
+
+package main
+
+import (
+	"fmt"
+	"log"
+	"os"
+
+	"github.com/jroimartin/gocui"
+)
+
+func main() {
+	f, _ := os.OpenFile("log.txt", 1, 0644)
+	log.SetOutput(f)
+	g, err := gocui.NewGui(gocui.OutputNormal)
+	if err != nil {
+		log.Panicln(err)
+	}
+	defer g.Close()
+	g.Cursor = true
+	g.Mouse = true
+
+	g.SetManagerFunc(layout)
+	if err := keybindings(g); err != nil {
+		log.Panicln(err)
+	}
+	if err := g.SetKeybinding("", gocui.KeyCtrlC, gocui.ModNone, quit); err != nil {
+		log.Panic(err)
+	}
+	if err := g.MainLoop(); err != nil && err != gocui.ErrQuit {
+		log.Panicln(err)
+	}
+}
+
+func layout(g *gocui.Gui) error {
+	// _, maxY := g.Size()
+	if v, err := g.SetView("but1", 0, 0, 19, 7); err != nil {
+		if err != gocui.ErrUnknownView {
+			return err
+		}
+		v.Highlight = true
+		v.SelBgColor = gocui.ColorGreen
+		v.SelFgColor = gocui.ColorBlack
+		fmt.Fprintln(v, "trino@192.168.1.1")
+		fmt.Fprintln(v, "trino@192.168.1.2")
+		fmt.Fprintln(v, "trino@192.168.1.3")
+		fmt.Fprintln(v, "trino@192.168.1.4")
+	}
+	return nil
+}
+
+var cmd = map[string]any{
+	"trino@192.168.1.1": "ssh ngoct@192.168.1.1 -p2395",
+	"trino@192.168.1.2": "ssh ngoct@192.168.1.2 -p2395",
+	"trino@192.168.1.3": "ssh ngoct@192.168.1.3 -p2395",
+	"trino@192.168.1.4": "ssh ngoct@192.168.1.4 -p2395",
+}
+
+func keybindings(g *gocui.Gui) error {
+	if err := g.SetKeybinding("", gocui.KeyCtrlC, gocui.ModNone, quit); err != nil {
+		return err
+	}
+
+	for _, n := range []string{"but1"} {
+		if err := g.SetKeybinding(n, gocui.MouseLeft, gocui.ModNone, showMsg); err != nil {
+			return err
+		}
+	}
+	if err := g.SetKeybinding("msg", gocui.MouseLeft, gocui.ModNone, delMsg); err != nil {
+		return err
+	}
+	return nil
+}
+
+func quit(g *gocui.Gui, v *gocui.View) error {
+	return gocui.ErrQuit
+}
+
+func showMsg(g *gocui.Gui, v *gocui.View) error {
+	var l string
+	var err error
+
+	if _, err := g.SetCurrentView(v.Name()); err != nil {
+		return err
+	}
+
+	_, cy := v.Cursor()
+	if l, err = v.Line(cy); err != nil {
+		l = ""
+	}
+	log.Println(l)
+
+	return nil
+}
+
+func delMsg(g *gocui.Gui, v *gocui.View) error {
+	if err := g.DeleteView("msg"); err != nil {
+		return err
+	}
+	return nil
+}
