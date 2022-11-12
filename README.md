@@ -11,13 +11,13 @@ On gateway paste (download sshgui code)
 
 ```bash
 # on gateway run linux 64 bit
-wget https://github.com/ngoctd314/sshgui/blob/master/run_linux?raw=true && mv run\?raw\=true sshgui && chmod +x sshgui
+wget https://github.com/ngoctd314/sshgui/blob/master/run_linux?raw=true && mv run_linux\?raw\=true sshgui && chmod +x sshgui
 
 # on gateway run macos 64 bit
-wget https://github.com/ngoctd314/sshgui/blob/master/run_mac?raw=true && mv run\?raw\=true sshgui && chmod +x sshgui
+wget https://github.com/ngoctd314/sshgui/blob/master/run_mac?raw=true && mv run_mac\?raw\=true sshgui && chmod +x sshgui
 
 # on gateway run win 64 bit
-wget https://github.com/ngoctd314/sshgui/blob/master/run_win?raw=true && mv run\?raw\=true sshgui && chmod +x sshgui
+wget https://github.com/ngoctd314/sshgui/blob/master/run_win?raw=true && mv run_win\?raw\=true sshgui && chmod +x sshgui
 ```
 
 
