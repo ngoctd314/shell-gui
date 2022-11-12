@@ -10,7 +10,14 @@ support ssh with up/down (j/k) then enter
 On gateway paste (download sshgui code)
 
 ```bash
-wget https://github.com/ngoctd314/sshgui/blob/master/run?raw=true && mv run\?raw\=true sshgui && chmod +x sshgui
+# on gateway run linux 64 bit
+wget https://github.com/ngoctd314/sshgui/blob/master/run_linux?raw=true && mv run\?raw\=true sshgui && chmod +x sshgui
+
+# on gateway run macos 64 bit
+wget https://github.com/ngoctd314/sshgui/blob/master/run_mac?raw=true && mv run\?raw\=true sshgui && chmod +x sshgui
+
+# on gateway run win 64 bit
+wget https://github.com/ngoctd314/sshgui/blob/master/run_win?raw=true && mv run\?raw\=true sshgui && chmod +x sshgui
 ```
 
 
