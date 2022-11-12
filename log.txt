@@ -1,0 +1,15 @@
+2022/11/12 13:06:51 create tmux ui
+2022/11/12 13:08:03 create tmux ui
+2022/11/12 13:08:03 create tmux pane
+2022/11/12 13:08:49 create tmux ui
+2022/11/12 13:08:49 create tmux pane
+2022/11/12 13:09:00 create tmux ui
+2022/11/12 13:09:00 create tmux pane
+2022/11/12 13:09:21 create tmux ui
+2022/11/12 13:09:22 create tmux pane
+2022/11/12 13:10:11 create tmux ui
+2022/11/12 13:10:11 create tmux pane
+2022/11/12 13:12:21 create tmux ui
+2022/11/12 13:12:21 create tmux pane
+2022/11/12 13:12:30 create tmux ui
+2022/11/12 13:12:30 create tmux pane
