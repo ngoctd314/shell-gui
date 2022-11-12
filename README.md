@@ -24,9 +24,9 @@ Then create your own ssh server
 ```txt
 ├── ssh_nav
 │   ├── ssp
-│   │   └── ssp@192.168.1.1
+│   │   └── ssp@192.168.1.1_2395
 │   └── trino
-│       └── trino@192.168.1.1
+│       └── trino@192.168.1.1_2395
 ```
 
 Run

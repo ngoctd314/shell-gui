@@ -7,12 +7,13 @@ import (
 	"os"
 	"os/exec"
 	"path/filepath"
+	"strings"
 
 	"github.com/gdamore/tcell/v2"
 	"github.com/rivo/tview"
 )
 
-func sshTree(sshPort, dir string) {
+func sshTree(dir string) {
 	rootDir := dir
 	root := tview.NewTreeNode(" ssh navigation >>").SetColor(tcell.ColorGreen)
 	tree := tview.NewTreeView().SetRoot(root).SetCurrentNode(root)
@@ -58,7 +59,9 @@ func sshTree(sshPort, dir string) {
 
 		app.Stop()
 
-		cmd := exec.Command("ssh", f.Name(), "-p", sshPort)
+		ar := strings.Split(f.Name(), "_")
+		ip, port := ar[0], ar[1]
+		cmd := exec.Command("ssh", ip, "-p", port)
 		cmd.Stdin = os.Stdin
 		cmd.Stdout = os.Stdout
 		cmd.Stderr = os.Stderr
