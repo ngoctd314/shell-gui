@@ -57,8 +57,6 @@ func sshTree(dir string) {
 			return
 		}
 
-		app.Stop()
-
 		ar := strings.Split(f.Name(), "_")
 		ip, port := ar[0], ar[1]
 		sshCmd := fmt.Sprintf("ssh %s -p%s\n", ip, port)
@@ -68,6 +66,17 @@ func sshTree(dir string) {
 		cmd.Stderr = os.Stderr
 
 		err := cmd.Run()
+		if err != nil {
+			log.Println(err)
+		}
+
+		// select pane
+		cmd = exec.Command("tmux", "select-pane", "-L")
+		cmd.Stdin = os.Stdin
+		cmd.Stdout = os.Stdout
+		cmd.Stderr = os.Stderr
+
+		err = cmd.Run()
 		if err != nil {
 			log.Println(err)
 		}
