@@ -15,7 +15,7 @@ import (
 
 func sshTree(dir string) {
 	rootDir := dir
-	root := tview.NewTreeNode(" ssh navigation >>").SetColor(tcell.ColorGreen)
+	root := tview.NewTreeNode("🐧 ssh navigation >>").SetColor(tcell.ColorGreen)
 	tree := tview.NewTreeView().SetRoot(root).SetCurrentNode(root)
 	app := tview.NewApplication()
 
@@ -27,7 +27,7 @@ func sshTree(dir string) {
 		for _, file := range files {
 			fileName := file.Name()
 			if file.IsDir() {
-				fileName = fmt.Sprintf("%s %s", "", file.Name())
+				fileName = fmt.Sprintf("%s %s", "📁", file.Name())
 			}
 			node := tview.NewTreeNode(fileName).
 				SetReference(filepath.Join(path, file.Name()))
