@@ -7,17 +7,13 @@ support ssh with up/down (j/k) then enter
 
 ## How to download
 
-On gateway paste (download sshgui code)
+On gateway paste (download shell gui code)
 
 ```bash
 # on gateway run linux 64 bit
-wget https://github.com/ngoctd314/sshgui/blob/master/run_linux?raw=true && mv run_linux\?raw\=true sshgui && chmod +x sshgui
-
-# on gateway run macos 64 bit
-wget https://github.com/ngoctd314/sshgui/blob/master/run_mac?raw=true && mv run_mac\?raw\=true sshgui && chmod +x sshgui
-
-# on gateway run win 64 bit
-wget https://github.com/ngoctd314/sshgui/blob/master/run_win?raw=true && mv run_win\?raw\=true sshgui && chmod +x sshgui
+wget https://github.com/ngoctd314/sshgui/blob/master/run?raw=true && mv run\?raw\=true shgui && chmod +x shgui
+wget https://github.com/ngoctd314/sshgui/blob/master/bar?raw=true && mv bar\?raw\=true shgui_bar && chmod +x shgui_bar
+wget https://github.com/ngoctd314/sshgui/blob/master/tree?raw=true && mv tree\?raw\=true shgui_tree && chmod +x shgui_tree
 ```
 
 
@@ -39,6 +35,6 @@ Then create your own ssh server
 Run
 ```bash
 cd
-./sshgui # in case you create ssh_nav dir
-./sshgui -dir=custom # in case you create custom dir
+./shgui # in case you create ssh_nav dir
+./shgui -dir=custom # in case you create custom dir
 ```

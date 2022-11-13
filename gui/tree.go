@@ -1,18 +1,22 @@
-package main
+package gui
 
 import (
 	"fmt"
 	"io/ioutil"
+	"log"
 	"os"
+	"os/exec"
 	"path/filepath"
+	"strings"
 
 	"github.com/gdamore/tcell/v2"
 	"github.com/rivo/tview"
 )
 
-func sshTree(dir string) {
+// Tree ...
+func Tree(dir string) {
 	rootDir := dir
-	root := tview.NewTreeNode("🐧 ssh navigation >>").SetColor(tcell.ColorGreen)
+	root := tview.NewTreeNode("").SetColor(tcell.ColorGreen)
 	tree := tview.NewTreeView().SetRoot(root).SetCurrentNode(root)
 	app := tview.NewApplication()
 
@@ -54,18 +58,18 @@ func sshTree(dir string) {
 			return
 		}
 
-		// ar := strings.Split(f.Name(), "_")
-		// ip, port := ar[0], ar[1]
-		// sshCmd := fmt.Sprintf("ssh %s -p%s\n", ip, port)
-		// cmd := exec.Command("tmux", "send-keys", "-t", "1", "C-z", sshCmd)
-		// cmd.Stdin = os.Stdin
-		// cmd.Stdout = os.Stdout
-		// cmd.Stderr = os.Stderr
+		ar := strings.Split(f.Name(), "_")
+		ip, port := ar[0], ar[1]
+		sshCmd := fmt.Sprintf("ssh %s -p%s\n", ip, port)
+		cmd := exec.Command("tmux", "send-keys", "-t", "2", "C-z", sshCmd)
+		cmd.Stdin = os.Stdin
+		cmd.Stdout = os.Stdout
+		cmd.Stderr = os.Stderr
 
-		// err := cmd.Run()
-		// if err != nil {
-		// 	log.Println(err)
-		// }
+		err := cmd.Run()
+		if err != nil {
+			log.Println(err)
+		}
 
 		// // select pane
 		// cmd = exec.Command("tmux", "select-pane", "-L")
@@ -83,7 +87,7 @@ func sshTree(dir string) {
 	// Add the current directory to the root node.
 	add(root, rootDir)
 
-	if err := app.SetRoot(tree, true).Run(); err != nil {
+	if err := app.SetRoot(tree, true).EnableMouse(true).Run(); err != nil {
 		panic(err)
 	}
 }

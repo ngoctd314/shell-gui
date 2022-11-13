@@ -1,4 +1,4 @@
-module github.com/ngoctd314/sshgui
+module github.com/ngoctd314/shell-gui
 
 go 1.18
 
