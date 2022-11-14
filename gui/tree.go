@@ -3,7 +3,6 @@ package gui
 import (
 	"fmt"
 	"io/ioutil"
-	"log"
 	"os"
 	"path/filepath"
 	"strings"
@@ -13,13 +12,11 @@ import (
 	"github.com/rivo/tview"
 )
 
-// Tree ...
-func Tree(dir string) {
-	rootDir := dir
+var selectedNode *tview.TreeNode
+
+func tree(app *tview.Application, createCommandInput <-chan createCommandInput, rootDir string) *tview.TreeView {
 	root := tview.NewTreeNode("").SetColor(tcell.ColorGreen)
 	tree := tview.NewTreeView().SetRoot(root).SetCurrentNode(root)
-	app := tview.NewApplication()
-
 	add := func(target *tview.TreeNode, path string) {
 		files, err := ioutil.ReadDir(path)
 		if err != nil {
@@ -46,6 +43,7 @@ func Tree(dir string) {
 		}
 		f, _ := os.Stat(reference.(string))
 		if f.IsDir() {
+			selectedNode = node
 			children := node.GetChildren()
 			if len(children) == 0 {
 				// Load and show files in this directory.
@@ -57,7 +55,6 @@ func Tree(dir string) {
 			}
 			return
 		}
-
 		app.Stop()
 
 		args := strings.Split(f.Name(), " ")
@@ -70,9 +67,8 @@ func Tree(dir string) {
 	})
 
 	// Add the current directory to the root node.
-	add(root, rootDir)
+	add(root, "./ssh_nav")
+	tree.SetBorder(true).SetTitle("Command GUI").SetTitleAlign(tview.AlignLeft)
 
-	if err := app.SetRoot(tree, true).EnableMouse(true).Run(); err != nil {
-		log.Println(err)
-	}
+	return tree
 }
