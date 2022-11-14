@@ -3,6 +3,7 @@ package gui
 import (
 	"fmt"
 	"io/ioutil"
+	"log"
 	"os"
 	"path/filepath"
 	"strings"
@@ -72,7 +73,6 @@ func Tree(dir string) {
 	add(root, rootDir)
 
 	if err := app.SetRoot(tree, true).EnableMouse(true).Run(); err != nil {
-		app.Stop()
-		panic(err)
+		log.Println(err)
 	}
 }
