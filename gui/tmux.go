@@ -107,5 +107,5 @@ func (t *Tmux) ToggleNavPane() {
 	t.paneShell = 2
 
 	t.SwapPaneData(t.paneShell, t.paneTree)
-	t.SendCmdToPane(t.paneTree, fmt.Sprint("./tree"))
+	t.SendCmdToPane(t.paneTree, fmt.Sprint("./shgui_tree"))
 }
