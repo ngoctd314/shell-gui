@@ -11,9 +11,9 @@ On gateway paste (download shell gui code)
 
 ```bash
 # on gateway run linux 64 bit
-wget https://github.com/ngoctd314/sshgui/blob/master/shgui?raw=true && mv shgui\?raw\=true shgui && chmod +x shgui
-wget https://github.com/ngoctd314/sshgui/blob/master/shgui_bar?raw=true && mv shgui_bar\?raw\=true shgui_bar && chmod +x shgui_bar
-wget https://github.com/ngoctd314/sshgui/blob/master/shgui_tree?raw=true && mv shgui_tree\?raw\=true shgui_tree && chmod +x shgui_tree
+wget https://github.com/ngoctd314/shell-gui/blob/master/shgui?raw=true && mv shgui\?raw\=true shgui && chmod +x shgui
+wget https://github.com/ngoctd314/shell-gui/blob/master/shgui_bar?raw=true && mv shgui_bar\?raw\=true shgui_bar && chmod +x shgui_bar
+wget https://github.com/ngoctd314/shell-gui/blob/master/shgui_tree?raw=true && mv shgui_tree\?raw\=true shgui_tree && chmod +x shgui_tree
 ```
 
 
