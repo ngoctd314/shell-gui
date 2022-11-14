@@ -21,7 +21,7 @@ func App(dir string) {
 
 	tmux := NewTmux()
 
-	tmux.NewPaneWithSize(tmux.paneBar, "-v", 1)
+	tmux.NewPaneWithSize(tmux.paneBar, "-v", 2)
 	tmux.NewPaneWithSize(tmux.paneTree, "-h", 30)
 
 	tmux.SendCmdToPane(tmux.paneBar, "./shgui_bar")
