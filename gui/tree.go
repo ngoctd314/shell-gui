@@ -3,13 +3,12 @@ package gui
 import (
 	"fmt"
 	"io/ioutil"
-	"log"
 	"os"
-	"os/exec"
 	"path/filepath"
 	"strings"
 
 	"github.com/gdamore/tcell/v2"
+	"github.com/ngoctd314/shell-gui/utils"
 	"github.com/rivo/tview"
 )
 
@@ -58,29 +57,14 @@ func Tree(dir string) {
 			return
 		}
 
-		ar := strings.Split(f.Name(), "_")
-		ip, port := ar[0], ar[1]
-		sshCmd := fmt.Sprintf("ssh %s -p%s\n", ip, port)
-		cmd := exec.Command("tmux", "send-keys", "-t", "2", "C-z", sshCmd)
-		cmd.Stdin = os.Stdin
-		cmd.Stdout = os.Stdout
-		cmd.Stderr = os.Stderr
+		app.Stop()
 
-		err := cmd.Run()
+		args := strings.Split(f.Name(), " ")
+		err := utils.Cmd(args[0], args[1:]...).Run()
+
 		if err != nil {
-			log.Println(err)
+			panic(err)
 		}
-
-		// // select pane
-		// cmd = exec.Command("tmux", "select-pane", "-L")
-		// cmd.Stdin = os.Stdin
-		// cmd.Stdout = os.Stdout
-		// cmd.Stderr = os.Stderr
-
-		// err = cmd.Run()
-		// if err != nil {
-		// 	log.Println(err)
-		// }
 
 	})
 
