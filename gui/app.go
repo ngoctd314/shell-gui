@@ -9,6 +9,8 @@ import (
 	"github.com/ngoctd314/shell-gui/utils"
 )
 
+const tmuxSession = "bash"
+
 // App ...
 func App(dir string) {
 	cmd := utils.Cmd("tmux", "new-session", "-s", tmuxSession)

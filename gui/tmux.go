@@ -14,8 +14,6 @@ type Tmux struct {
 	paneShell int
 }
 
-const tmuxSession = "bash"
-
 // NewTmux ...
 func NewTmux() *Tmux {
 	return &Tmux{
