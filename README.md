@@ -12,7 +12,7 @@ On gateway paste (download shell gui code)
 **Stable version (only tree)**
 
 ```bash
-wget https://github.com/ngoctd314/shell-gui/blob/master/shtree?raw=true && mv shtree\?raw\=true shtree && chmod +x shtree
+wget https://github.com/ngoctd314/shell-gui/blob/master/dashboard?raw=true && mv dashboard\?raw\=true dashboard && chmod +x shtree
 ```
 
 **Develop version (has bug, includes tree, bar, shell)**
