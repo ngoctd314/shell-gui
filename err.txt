@@ -1,0 +1,6 @@
+Pseudo-terminal will not be allocated because stdin is not a terminal.
+Pseudo-terminal will not be allocated because stdin is not a terminal.
+ngoctd@10.5.0.242: Permission denied (keyboard-interactive).
+Pseudo-terminal will not be allocated because stdin is not a terminal.
+ngoctd@10.5.0.242: Permission denied (keyboard-interactive).
+ngoctd@10.5.0.242: Permission denied (keyboard-interactive).

@@ -6,12 +6,22 @@ import (
 	"time"
 )
 
+var fout *os.File
+var fin *os.File
+var ferr *os.File
+
+func init() {
+	fout, _ = os.OpenFile("out.txt", os.O_CREATE|os.O_APPEND|os.O_WRONLY, 0644)
+	fin, _ = os.OpenFile("in.txt", os.O_CREATE|os.O_APPEND|os.O_WRONLY, 0644)
+	ferr, _ = os.OpenFile("err.txt", os.O_CREATE|os.O_APPEND|os.O_WRONLY, 0644)
+}
+
 // Cmd create new command
 func Cmd(name string, arg ...string) *exec.Cmd {
 	cmd := exec.Command(name, arg...)
 	cmd.Stdin = os.Stdin
-	cmd.Stdout = os.Stdout
-	cmd.Stderr = os.Stderr
+	cmd.Stdout = fout
+	cmd.Stderr = ferr
 
 	return cmd
 }

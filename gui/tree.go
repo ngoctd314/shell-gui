@@ -3,9 +3,9 @@ package gui
 import (
 	"fmt"
 	"io/ioutil"
+	"log"
 	"os"
 	"path/filepath"
-	"strings"
 
 	"github.com/gdamore/tcell/v2"
 	"github.com/ngoctd314/shell-gui/utils"
@@ -55,13 +55,15 @@ func tree(app *tview.Application, createCommandInput <-chan createCommandInput, 
 			}
 			return
 		}
-		app.Stop()
+		// app.Stop()
 
-		args := strings.Split(f.Name(), " ")
-		err := utils.Cmd(args[0], args[1:]...).Run()
+		// args := strings.Split(f.Name(), " ")
+		// err := utils.Cmd(args[0], args[1:]...).Run()
+		// err := utils.Cmd("ssh", "-p2395", "ngoctd@10.5.0.242").Run()
+		err := utils.Cmd("/home/idev/script/gw.sh").Run()
 
 		if err != nil {
-			panic(err)
+			log.Println(err)
 		}
 
 	})
