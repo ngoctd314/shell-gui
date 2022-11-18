@@ -1,6 +1,7 @@
 package gui
 
 import (
+	"log"
 	"os"
 
 	"github.com/ngoctd314/shell-gui/utils"
@@ -21,6 +22,7 @@ var f, err = os.OpenFile("out.txt", os.O_WRONLY, 0644)
 
 func (s *shellWriter) Write(p []byte) (int, error) {
 	s.t.SetText(string(p))
+	log.Println(string(p))
 	f.Write(p)
 
 	s.app.Draw()

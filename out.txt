@@ -1,0 +1,25 @@
+spawn ssh -p 2395 ngoctd@10.5.0.242
+Please choose a method(session number 61864)
+1)Enter Code(will SMS you code)
+2)Authenticator Code
+3)App Approve
+Enter Select option: 2
+Verify code: 027224
+Welcome to Ubuntu 18.04.3 LTS (GNU/Linux 4.15.0-194-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+ * Strictly confined Kubernetes makes edge and IoT secure. Learn how MicroK8s
+   just raised the bar for easy, resilient and secure K8s cluster deployment.
+
+   https://ubuntu.com/engage/secure-kubernetes-at-the-edge
+New release '20.04.5 LTS' available.
+Run 'do-release-upgrade' to upgrade to it.
+
+Authorized uses only. All activity may be monitored and reported.
+Last login: Fri Nov 18 16:31:00 2022 from 192.168.2.251
+ngoctd@adt-sys-ssh-platform-0-242:~$ 35;87;10M35;82;9M35;80;9M35;78;9M35;76;9M<-242:~$ 35;87;10M35;82;9M35;80;9M35;78;9M35;76;9M35;75;9M                    35;72;9M35;71;9M35;70;9M<M35;78;9M35;76;9M35;75;9M35;72;9M35;71;9M35;70;9M35;69;8M                        35;70;6M35;70;4M35;68;3M<M35;71;9M35;70;9M35;69;8M35;70;6M35;70;4M35;68;3M35;66;4M                        35;65;5M35;64;6M35;65;7M<M35;70;4M35;68;3M35;66;4M35;65;5M35;64;6M35;65;7M35;66;8M                        35;68;9M35;69;10M35;71;9M<35;64;6M35;65;7M35;66;8M35;68;9M35;69;10M35;71;9M35;72;7M                         35;72;5M35;70;5M35;66;6M<35;69;10M35;71;9M35;72;7M35;72;5M35;70;5M35;66;6M35;63;6M                        35;61;7M35;60;9M35;61;10M<5;70;5M35;66;6M35;63;6M35;61;7M35;60;9M35;61;10M35;63;11M                         35;65;12M35;69;15M35;71;15M<;9M35;61;10M35;63;11M35;65;12M35;69;15M35;71;15M35;72;14M                           35;72;13M35;72;11M35;70;10M<;15M35;71;15M35;72;14M35;72;13M35;72;11M35;70;10M35;65;8M                           35;64;7M35;62;7M35;60;8M<5;72;11M35;70;10M35;65;8M35;64;7M35;62;7M35;60;8M35;58;8M                        35;57;8M35;56;8M35;51;9M<35;62;7M35;60;8M35;58;8M35;57;8M35;56;8M35;51;9M35;49;10M                        35;49;12M35;51;13M35;53;13M<6;8M35;51;9M35;49;10M35;49;12M35;51;13M35;53;13M35;55;14M                           35;57;14M35;57;12M35;57;10M<;13M35;53;13M35;55;14M35;57;14M35;57;12M35;57;10M35;56;9M                           35;55;8M0;54;8M^C
+ngoctd@adt-sys-ssh-platform-0-242:~$ s^C
+ngoctd@adt-sys-ssh-platform-0-242:~$ l

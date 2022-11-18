@@ -1,9 +1,7 @@
 package gui
 
 import (
-	"os"
 	"os/exec"
-	"strings"
 
 	"github.com/rivo/tview"
 )
@@ -14,16 +12,15 @@ func stdin(app *tview.Application, view *tview.TextView) string {
 	// do not display entered characters on the screen
 	exec.Command("stty", "-F", "/dev/tty", "-echo").Run()
 
-	var b []byte = make([]byte, 1)
-	rs := ""
+	// rs := ""
 	for {
-		os.Stdin.Read(b)
-		if len(strings.TrimSpace(string(b))) == 0 {
-			view.SetText("end")
-			return rs
+		select {
+		case v := <-forCusView:
+			if v == shellView {
+			}
+
+			// if v == shellView {
+			// }
 		}
-		rs += string(b)
-		view.SetText(view.GetText(true) + string(b))
-		app.Draw()
 	}
 }
