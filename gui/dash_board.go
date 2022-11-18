@@ -1,7 +1,6 @@
 package gui
 
 import (
-	"os"
 	"os/exec"
 
 	"github.com/rivo/tview"
@@ -10,30 +9,30 @@ import (
 // DashBoard ...
 func DashBoard(dir string) {
 	app := tview.NewApplication()
-	flex := tview.NewFlex()
 
 	createCommandChan := make(chan createCommandInput, 1)
 
 	nav := tview.NewFlex().SetDirection(tview.FlexRow).
-		AddItem(tree(app, createCommandChan, dir), 0, 4, true).
+		AddItem(tree(dir), 0, 4, true).
 		AddItem(formCreate(createCommandChan), 0, 1, false)
 	shell := newShell()
-	fin, _ := os.OpenFile("in.txt", os.O_CREATE|os.O_APPEND|os.O_WRONLY, 0644)
 	shellWriter := &shellWriter{
 		t:   shell,
-		fin: fin,
 		app: app,
 	}
 
 	go func() {
-		cmd := exec.Command("ssh", "localhost")
-		cmd.Stdin = shellWriter
+		cmd := exec.Command("ssh", "ngoctd@10.5.0.242", "-p2395")
+		cmd.Stdin = nil
 		cmd.Stdout = shellWriter
-		cmd.Stderr = os.Stdout
+		cmd.Stderr = nil
 		// cmd.Stdout = &shellWriter
 		// cmd.Stderr = &shellWriter
 		// ch := make(chan bool)
-		cmd.Run()
+		go cmd.Run()
+		go func() {
+			stdin(app, shell)
+		}()
 		// go func() {
 		// 	select {
 		// 	case <-time.After(time.Second):
@@ -44,9 +43,17 @@ func DashBoard(dir string) {
 		// cmd.Stdin.Read([]byte("ls"))
 	}()
 
-	flex.
+	flex := tview.NewFlex()
+
+	menu := createMenu()
+	navAndShell := tview.NewFlex()
+	navAndShell.
 		AddItem(nav, 40, 0, true).
 		AddItem(shell, 0, 1, false)
+
+	flex.SetDirection(tview.FlexRow).
+		AddItem(menu, 1, 0, false).
+		AddItem(navAndShell, 0, 1, true)
 
 	if err := app.SetRoot(flex, true).EnableMouse(true).Run(); err != nil {
 		panic(err)

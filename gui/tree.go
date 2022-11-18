@@ -14,7 +14,7 @@ import (
 
 var selectedNode *tview.TreeNode
 
-func tree(app *tview.Application, createCommandInput <-chan createCommandInput, rootDir string) *tview.TreeView {
+func tree(dir string) *tview.TreeView {
 	root := tview.NewTreeNode("").SetColor(tcell.ColorGreen)
 	tree := tview.NewTreeView().SetRoot(root).SetCurrentNode(root)
 	add := func(target *tview.TreeNode, path string) {
@@ -69,7 +69,7 @@ func tree(app *tview.Application, createCommandInput <-chan createCommandInput, 
 	})
 
 	// Add the current directory to the root node.
-	add(root, "./ssh_nav")
+	add(root, dir)
 	tree.SetBorder(true).SetTitle("Command GUI").SetTitleAlign(tview.AlignLeft)
 
 	return tree

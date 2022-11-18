@@ -1,7 +1,6 @@
 package gui
 
 import (
-	"fmt"
 	"os"
 
 	"github.com/ngoctd314/shell-gui/utils"
@@ -16,20 +15,17 @@ func createTmpFile() {
 type shellWriter struct {
 	app *tview.Application
 	t   *tview.TextView
-	fin *os.File
 }
+
+var f, err = os.OpenFile("out.txt", os.O_WRONLY, 0644)
 
 func (s *shellWriter) Write(p []byte) (int, error) {
 	s.t.SetText(string(p))
+	f.Write(p)
+
 	s.app.Draw()
 
 	return len(p), nil
-}
-
-func (s *shellWriter) Read(p []byte) (int, error) {
-	n, err := s.fin.Read(p)
-	fmt.Println("p", string(p), "READ")
-	return n, err
 }
 
 func newShell() *tview.TextView {
